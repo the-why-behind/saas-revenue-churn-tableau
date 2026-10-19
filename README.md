@@ -13,13 +13,13 @@ An interactive 4-page dashboard that tracks recurring revenue, finds the custome
 
 ## Summary
 
-The company grew monthly recurring revenue (MRR) from almost zero to **$10.7M** in two years, and **22%** of its 500 customers have churned.
+The company grew monthly recurring revenue (MRR) from almost zero to **$10,7M** in two years, and **22%** of its 500 customers have churned.
 
-The analysis shows that churn depends on **who the customer is and where they came from**, not on the price plan, product usage or support speed. The riskiest segment is **DevTools companies acquired through events: 43.5% churn**, twice the company average. The safest is Cybersecurity companies coming through partners: 5%.
+The analysis shows that churn depends on **who the customer is and where they came from**, not on the price plan, product usage or support speed. The riskiest segment is **DevTools companies acquired through events: 43,5% churn**, twice the company average. The safest is Cybersecurity companies coming through partners: 5%.
 
 | Active MRR | Active ARR | Customers | Churn rate | Support CSAT |
 |---|---|---|---|---|
-| $10.2M | $121.9M | 500 | 22.0% | 3.98 / 5 |
+| $10,2M | $121,9M | 500 | 22,0% | 3,98 / 5 |
 
 ---
 
@@ -42,9 +42,9 @@ Source: [RavenStack – SaaS Subscription and Churn Analytics Dataset](https://w
 | Table | Rows | One row is… |
 |---|---|---|
 | accounts | 500 | a customer company (industry, country, acquisition channel, churn flag) |
-| subscriptions | 5,000 | a subscription period (dates, plan tier, MRR) |
-| feature_usage | 25,000 | one feature used on one day (usage count, errors) |
-| support_tickets | 2,000 | a support ticket (priority, resolution time, satisfaction, escalation) |
+| subscriptions | 5000 | a subscription period (dates, plan tier, MRR) |
+| feature_usage | 25000 | one feature used on one day (usage count, errors) |
+| support_tickets | 2000 | a support ticket (priority, resolution time, satisfaction, escalation) |
 | churn_events | 600 | a cancellation (date, reason, refund) |
 
 The five tables are stored in Google Sheets and connected to Tableau as an online data source, so the dashboard can be refreshed without any manual data preparation.
@@ -59,7 +59,7 @@ The tables describe different things (companies, subscriptions, tickets), so joi
 - `subscriptions`, `support_tickets` and `churn_events` relate to it on `account_id`;
 - `feature_usage` relates to `subscriptions` on `subscription_id`.
 
-After building the model I checked the row counts against the source (500 / 5,000 / 25,000). They matched exactly, so nothing was duplicated.
+After building the model I checked the row counts against the source (500 / 5000 / 25000). They matched exactly, so nothing was duplicated.
 
 ### Monthly revenue: the calendar join
 
@@ -101,11 +101,11 @@ COUNTD(IF [Churn Flag] THEN [Account Id] END) / COUNTD([Account Id])
 { FIXED : COUNTD(IF [Churn Flag] THEN [Account Id] END) } / { FIXED : COUNTD([Account Id]) }
 ```
 
-**Colouring only meaningful differences.** 22.1% is not really "worse" than an average of 22.0%, so a segment is coloured only if it differs by more than 2 percentage points:
+**Colouring only meaningful differences.** 22,1% is not really "worse" than an average of 22,0%, so a segment is coloured only if it differs by more than 2 percentage points:
 
 ```
-IF [Churn Rate %] - MIN([Overall Churn Rate]) > 0.02 THEN "Above average"
-ELSEIF [Churn Rate %] - MIN([Overall Churn Rate]) < -0.02 THEN "Below average"
+IF [Churn Rate %] - MIN([Overall Churn Rate]) > 0,02 THEN "Above average"
+ELSEIF [Churn Rate %] - MIN([Overall Churn Rate]) < -0,02 THEN "Below average"
 ELSE "Near average" END
 ```
 
@@ -148,13 +148,13 @@ Purpose, instructions, metric definitions, sources and licence.
 
 ## Key findings
 
-1. **Churn depends on the segment.** DevTools customers churn at 31.0%, Cybersecurity at 16.0%. Customers from events churn at 30.2%, those from partners at 14.6%.
-2. **The combination matters most.** DevTools customers from events churn at 43.5% and from ads at 38.5%; Cybersecurity customers from partners at only 5.0%. For HealthTech, the partner channel is the worst (35.7%).
+1. **Churn depends on the segment.** DevTools customers churn at 31,0%, Cybersecurity at 16,0%. Customers from events churn at 30,2%, those from partners at 14,6%.
+2. **The combination matters most.** DevTools customers from events churn at 43,5% and from ads at 38,5%; Cybersecurity customers from partners at only 5,0%. For HealthTech, the partner channel is the worst (35,7%).
 3. **The price plan does not drive churn.** Basic, Pro and Enterprise all churn at about 22%, so discounts or plan changes are unlikely to solve the problem.
-4. **Revenue is concentrated.** Enterprise brings 74% of active MRR ($7.5M of $10.2M).
+4. **Revenue is concentrated.** Enterprise brings 74% of active MRR ($7,5M of $10,2M).
 5. **Product usage does not explain churn.** Churned customers used the product as much as retained ones (522 vs 495 uses per account) and saw the same number of errors.
-6. **Support priorities do not work.** Urgent tickets take 34.6 hours on average, almost the same as low-priority tickets (36.3 hours).
-7. **Escalations are a warning sign.** Customers with an escalated ticket churn at 25.3%, customers whose issues were solved without escalation at 21.2%. Customers who never contacted support churn at 25.0%.
+6. **Support priorities do not work.** Urgent tickets take 34,6 hours on average, almost the same as low-priority tickets (36,3 hours).
+7. **Escalations are a warning sign.** Customers with an escalated ticket churn at 25,3%, customers whose issues were solved without escalation at 21,2%. Customers who never contacted support churn at 25,0%.
 
 ---
 
