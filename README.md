@@ -1,4 +1,4 @@
-# Who leaves a SaaS company, and why?
+# Understanding customer churn in a SaaS company
 
 **Tableau case study · Revenue & churn analysis**
 
