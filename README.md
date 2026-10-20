@@ -4,8 +4,7 @@
 
 An interactive 4-page dashboard that tracks recurring revenue, finds the customer segments that churn the most, and tests whether product usage or customer support explain it.
 
-**[Open the live dashboard on Tableau Public →]
-(https://public.tableau.com/app/profile/anastasiia.nevalahti/viz/RavenStackSaaSdata/About)**
+**[Open the live dashboard on Tableau Public →](https://public.tableau.com/app/profile/anastasiia.nevalahti/viz/RavenStackSaaSdata/About)**
 
 ![Churn drivers page of the dashboard](churn-drivers.jpg)
 
